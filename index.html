@@ -1,0 +1,150 @@
+<html>
+  <head>
+    <title>
+      click it
+    </title>
+  </head>
+  <body> 
+    <h1>oio</h1>
+    <h1 id="title">click it</h1>
+    <h1 id="score"></h1>
+    <h1 id="timer"></h1>
+    <div id="bloc"></div>
+    <div id="message">
+      <h1 id="subtitle">Congrats</h1>
+      <h1 id="score1"></h1>
+      <h1 id="time1"></h1>
+      <h1 id="highScore"></h1>
+      <button id="restart"><h1 id="text">restart</h1></button>
+    </div>
+    <style>
+      h1{
+        font-family: arial;
+        position: absolute;
+      }
+      div{
+        position: relative;
+      }
+      #title{
+        font-size: 100;
+        top: -50px;
+        left: 500px;
+        animation: color 3s infinite;
+        animation-timing-function: linear;
+      }
+      #score{
+        top: 150px;
+        left: 400px;
+      }
+      #timer{
+        top: 150px;
+        left: 800px;
+      }
+      #bloc{
+        width: 150px;
+        height: 150px;
+        border: solid 4px black;
+        top: 300px;
+        left: 570px;
+      }
+      #message{
+        width: 500px;
+        height: 390px;
+        border-radius: 15px;
+        top: -50px;
+        left: 400px;
+        display: none;
+        background-color:rgb(47, 154, 226);
+      }
+      #subtitle{
+        position: relative;
+        left: 120px;
+        top: 20px;
+        font-size: 60;
+      }
+      #score1{
+        position: relative;
+        left: 180px;
+      }
+      #time1{
+        position: relative;
+        left: 180px;
+      }
+      #highScore{
+        position: relative;
+        left: 180px;
+      }
+      #restart{
+        width: 150px;
+        height: 80px;
+        background-color: rgb(28, 128, 221);
+        border: solid 0 white;
+        border-radius: 15px;
+        position: relative;
+        left: 170px;
+      }
+      #text{
+        position: relative;
+      }
+      @keyframes color {
+        0%{color: blue;}
+        20%{color: yellow;}
+        70%{color: red;}
+        100%{color: green;}
+      }
+    </style>
+    <script>
+      var timer = document.getElementById("timer")
+      var score = document.getElementById("score")
+      var bloc = document.getElementById("bloc")
+      var message = document.getElementById("message")
+      var button = document.querySelector("button")
+      var score1 = document.getElementById("score1")
+      var time1 = document.getElementById("time1")
+      var highScore = document.getElementById("highScore")
+      var highScorea = 0
+      var time = 0
+      var scoreNumber = 0
+      score.textContent = ("score: " + scoreNumber)
+
+      function augmente(){
+        timer.textContent = ("timer: " + time)
+
+        setTimeout(function(){
+          timer.textContent = ("timer: " + time)
+          if(time === 10){
+            message.style.display = "block"
+            score1.textContent = ("score: " + scoreNumber)
+            time1.textContent = ("time: " + 10)
+
+            if(scoreNumber > highScorea){
+              highScorea = scoreNumber
+              highScore.textContent = ("high: " + highScorea)
+            }
+
+            button.addEventListener("click", function(){
+              message.style.display = "none"
+              time = 0
+              scoreNumber = 0
+              score.textContent = ("score: " + scoreNumber)
+              timer.textContent = ("timer: " + time)
+            })
+            
+          }
+            time++
+          augmente()
+        }, 1000)
+      }
+      augmente()
+
+      bloc.addEventListener("click", function(){
+        scoreNumber++
+        score.textContent = ("score: " + scoreNumber)
+      })
+    </script>
+  </body>
+</html>
+
+
+
+
