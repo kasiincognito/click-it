@@ -144,9 +144,16 @@
         scoreNumber++
         score.textContent = ("score: " + scoreNumber)
       })
+      document.addEventListener("keydown", function(event){
+        if(event.key === "Space"){
+          scoreNumber++
+          score.textContent = ("score: " + scoreNumber)
+        }
+      })
     </script>
   </body>
 </html>
+
 
 
 
